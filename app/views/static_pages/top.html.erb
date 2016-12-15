@@ -1,3 +1,8 @@
 <h1>React Tutorial#top</h1>
 
-<%= react_component 'CommentBox' %>
+<% data = [
+    { author: 'Pete Hunt', text: 'This i sone comment' },
+    { author: 'Jordan', text: 'This is another comment' },
+  ]
+%>
+<%= react_component 'CommentBox', data: data %>

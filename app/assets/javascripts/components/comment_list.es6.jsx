@@ -1,10 +1,11 @@
 class CommentList extends React.Component {
   render() {
+    var commentNodes = this.props.data.map((comment)=> {
+      return(<Comment author={comment.author}>{comment.text}</Comment>);
+    });
+
     return(
-      <div className='commentList'>
-        <Comment author='魚'>React良いよ。</Comment>
-        <Comment author='呉'>なるほど！！</Comment>
-      </div>
+      <div className='commentList'>{commentNodes}</div>
     );
   }
 }

@@ -7,7 +7,7 @@ class CommentBox extends React.Component {
     return(
       <div className='commentBox'>
         <h2>Comments</h2>
-        <CommentList />
+        <CommentList data={this.props.data} />
         <CommentForm />
       </div>
     );
