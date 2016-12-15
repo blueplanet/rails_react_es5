@@ -8,6 +8,7 @@ class CommentBox extends React.Component {
       <div className='commentBox'>
         <h2>Comments</h2>
         <CommentList data={this.props.data} />
+        <hr />
         <CommentForm />
       </div>
     );
