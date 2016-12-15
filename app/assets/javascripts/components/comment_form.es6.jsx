@@ -1,9 +1,20 @@
 class CommentForm extends React.Component {
+  handleSubmit(e) {
+    e.preventDefault();
+
+    var author = this.refs.author.value.trim();
+    var text = this.refs.text.value.trim();
+    if (!text || !author) return;
+
+    this.refs.author.value = '';
+    this.refs.text.value = '';
+  }
+
   render() {
     return(
-      <form className='commentForm'>
-        <input type='text' placeholder='Your name' />
-        <input type='text' placeholder='Say someething...' />
+      <form className='commentForm' onSubmit={this.handleSubmit.bind(this)}>
+        <input type='text' placeholder='Your name' ref='author' />
+        <input type='text' placeholder='Say someething...' ref='text' />
         <input type='submit' value='Post' />
        </form>
     );
