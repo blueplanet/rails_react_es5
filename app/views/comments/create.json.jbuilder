@@ -1,1 +1,1 @@
-json.array! @comments, :author, :text
+json.array! @comments, :id, :author, :text
