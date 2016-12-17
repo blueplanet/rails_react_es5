@@ -1,8 +1,9 @@
 class CommentBox extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      data: []
+      data: props.data
     };
   }
 
@@ -18,13 +19,30 @@ class CommentBox extends React.Component {
     })
   }
 
+  handleCommentSubmit(comment) {
+    $.ajax({
+      url: '/comments',
+      dataType: 'json',
+      type: 'POST',
+      data: comment,
+      success: (data) => { this.setState({data: data}); },
+      errors: (xhr, status, err) => {
+        console.error(status, err.toString());
+      }
+    });
+  }
+
+  componentDidMount() {
+    // this.loadCommentsFromServer();
+  }
+
   render() {
     return(
       <div className='commentBox'>
         <h2>Comments</h2>
-        <CommentList data={this.props.data} />
+        <CommentList data={this.state.data} />
         <hr />
-        <CommentForm />
+        <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
       </div>
     );
   }
