@@ -20,12 +20,15 @@ class CommentBox extends React.Component {
   }
 
   handleCommentSubmit(comment) {
+    var comments = this.state.data;
+    var newComments = comments.concat([comment]);
+    this.setState({data:[newComments]});
+
     $.ajax({
       url: '/comments',
       dataType: 'json',
       type: 'POST',
       data: comment,
-      success: (data) => { this.setState({data: data}); },
       errors: (xhr, status, err) => {
         console.error(status, err.toString());
       }
